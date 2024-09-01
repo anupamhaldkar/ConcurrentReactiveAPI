@@ -27,7 +27,7 @@ public class ApiServiceImpl implements ApiService {
 
     @Override
     public Mono<Object> fetchData() {
-        String api1Url = "https://jsonblob.om/api/jsonBlob/1278302869768757248";
+        String api1Url = "https://jsonblob.com/api/jsonBlob/1278302869768757248";
         String api2Url = "https://jsonblob.com/api/jsonBlob/1278303163344871424";
 
         Mono<String> api1Response = fetchFromApi(api1Url);
@@ -62,12 +62,6 @@ public class ApiServiceImpl implements ApiService {
     private Object parseJson(String json) throws JsonProcessingException {
         return objectMapper.readValue(json, new TypeReference<Map<String, Object>>() {
         });
-    }
-
-    private Mono<?> handlePartialResponse(Mono<String> api1Response, Mono<String> api2Response) {
-        return Mono.firstWithSignal(api1Response, api2Response)
-                .map(response -> Map.of("SuccessfulResponse", response))
-                .switchIfEmpty(Mono.error(new RuntimeException("Both API calls failed or timed out")));
     }
 
     private Object mergeResponses(String response1, String response2) throws JsonProcessingException {

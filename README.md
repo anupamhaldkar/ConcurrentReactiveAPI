@@ -46,11 +46,3 @@ This repository seems to be set up for building a concurrent and/or reactive API
 2. Create a feature branch (`git checkout -b feature/your-feature`).
 3. Commit your changes.
 4. Push and open a Pull Request.
-
-## License
-
-Specify your license here.
-
----
-
-*This README was generated based on the directory and file structure, as the original README was missing. For more details, explore the code under `src/main` and `pom.xml`.*
